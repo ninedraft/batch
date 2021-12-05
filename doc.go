@@ -9,7 +9,7 @@
 //	- doc.go.dev does not support generics (yet);
 //
 // Code quality politics
-// 
+//
 //	- no external non-test dependencies;
 //	- code coverage >= 90% (~100% currently);
 package batch

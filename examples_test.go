@@ -11,13 +11,13 @@ import (
 func ExampleBatcher() {
 	var ctx = context.Background()
 
-	var fn =  func(_ context.Context, values []string) error {
+	var fn = func(_ context.Context, values []string) error {
 		fmt.Println(values)
 		return nil
 	}
-	var b = batch.New(4,fn)
+	var b = batch.New(4, fn)
 
-	for i := 0; i < 4; i++ {
+	for i := 0; i < 15; i++ {
 		if err := b.Push(ctx, strconv.Itoa(i)); err != nil {
 			panic(err)
 		}
@@ -26,17 +26,19 @@ func ExampleBatcher() {
 		panic(err)
 	}
 	// Output: [0 1 2 3]
+	// [4 5 6 7]
+	// [8 9 10 11]
+	// [12 13 14]
 }
-
 
 func ExampleBatcher_Reset() {
 	var ctx = context.Background()
 
-	var fn =  func(_ context.Context, values []string) error {
+	var fn = func(_ context.Context, values []string) error {
 		fmt.Println(values)
 		return nil
 	}
-	var b = batch.New(4,fn)
+	var b = batch.New(4, fn)
 
 	if err := b.Push(ctx, "bad balue"); err != nil {
 		panic(err)
@@ -50,4 +52,3 @@ func ExampleBatcher_Reset() {
 	}
 	// Output: [good value]
 }
-
