@@ -65,7 +65,7 @@ func (b *Batcher[T]) Reset(fn Callback[T]) {
 // Flush passes internal buffer into the callback function and resets buffer.
 // It returns resulting error, if got one.
 func (b *Batcher[T]) Flush(ctx context.Context) error {
-	if b.err != nil {
+	if b.err != nil || len(b.b.Items) == 0 {
 		return b.err
 	}
 	err := b.fn(ctx, b.b.Items)

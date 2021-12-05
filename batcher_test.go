@@ -173,6 +173,20 @@ func TestBatcher_ResetEmpty(test *testing.T) {
 	b.Reset(fn)
 }
 
+func TestBatcher_FlushEmpty(test *testing.T) {
+	test.Logf("ensures that .Reset doesn't call the callback function")
+
+	var ctx = context.Background()
+	const size = 4
+	fn := func(_ context.Context, values []string) error {
+		test.Fatalf("callback must be never called")
+		return nil
+	}
+	var b = New(size, fn)
+	err := b.Flush(ctx)
+	require.NoError(test, err, "batcher.Flush: resulting error")
+}
+
 func TestBatcher_Context(test *testing.T) {
 	test.Logf("ensures context is passed through method to callback")
 
@@ -195,7 +209,6 @@ func TestBatcher_Context(test *testing.T) {
 	require.NotEmpty(test, counter, "callback must be called at least once")
 }
 
-
 func TestBatcher_Size(test *testing.T) {
 	test.Logf("checks if happy path emits correct values")
 
@@ -203,7 +216,7 @@ func TestBatcher_Size(test *testing.T) {
 	var ctx = context.Background()
 	var values = []string{"1", "two", "crow", "Ж", "", "📚", "\x11", "eight", "nein", "10"}
 	const size = 4
-	
+
 	var b = New(size, func(_ context.Context, items []string) error {
 		return nil
 	})
