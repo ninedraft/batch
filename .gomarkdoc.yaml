@@ -4,3 +4,7 @@ header: |+
   [![GitHub Actions](https://github.com/ninedraft/batch/workflows/Test/badge.svg)](https://github.com/ninedraft/batch/actions?query=workflow%3ATest+branch%3Amaster)
   [![Go Reference](https://pkg.go.dev/badge/github.com/ninedraft/batch.svg)](https://pkg.go.dev/github.com/ninedraft/batch)
   
+repository:
+  url: https://github.com/ninedraft/batch
+  defaultBranch: master
+  path: /

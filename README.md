@@ -3,6 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/ninedraft/batch)](https://goreportcard.com/report/github.com/ninedraft/batch)
 [![GitHub Actions](https://github.com/ninedraft/batch/workflows/Test/badge.svg)](https://github.com/ninedraft/batch/actions?query=workflow%3ATest+branch%3Amaster)
 [![Go Reference](https://pkg.go.dev/badge/github.com/ninedraft/batch.svg)](https://pkg.go.dev/github.com/ninedraft/batch)
+
 # batch
 
 ```go
