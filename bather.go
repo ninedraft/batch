@@ -71,7 +71,12 @@ func (b *Batcher[T]) Flush(ctx context.Context) error {
 	err := b.fn(ctx, b.b.Items)
 	b.b.Reset()
 	if err != nil {
-		return err
+		b.err = err
 	}
-	return nil
+	return b.err
+}
+
+// Size returns internal buffer size.
+func (b *Batcher[T]) Size() uint {
+	return b.size
 }
