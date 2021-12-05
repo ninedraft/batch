@@ -1,5 +1,10 @@
 .PHONY: all
-all: test build
+all: test build doc
+
+.PHONY: doc
+doc:
+	# requires github.com/princjef/gomarkdoc/cmd/gomarkdoc
+	gomarkdoc --output=README.md ./...
 
 .PHONY: test
 test:
