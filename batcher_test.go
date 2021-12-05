@@ -1,4 +1,4 @@
-package batcher_test
+package batch_test
 
 import (
 	"context"

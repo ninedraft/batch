@@ -1,4 +1,4 @@
-package batcher
+package batch
 
 func newBuffer[T any](size uint) *buffer[T] {
 	return &buffer[T]{
